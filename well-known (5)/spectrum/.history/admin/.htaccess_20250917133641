@@ -1,0 +1,16 @@
+# Disable directory listing
+Options -Indexes
+
+RewriteEngine On
+
+# Allow requests to login.php, index.php only
+RewriteCond %{REQUEST_URI} !^/spectrum/admin/(index|login)\.php$ [NC]
+
+# Allow static assets to load
+RewriteCond %{REQUEST_URI} !\.(css|js|png|jpg|jpeg|gif|svg|woff2?|ttf|eot)$ [NC]
+
+# Allow AJAX folder
+RewriteCond %{REQUEST_URI} !^/spectrum/admin/ajax/ [NC]
+
+# Redirect everything else to login.php
+RewriteRule ^.*$ /spectrum/admin/login.php [R=302,L]

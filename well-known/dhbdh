@@ -146,26 +146,47 @@ while ($row = $res->fetch_assoc()) {
 
 
   <!-- WHO WE ARE SECTION (OPTIMIZED) -->
-<div class="who-we-are-section">
-  <div class="who-we-section">
+  <div class="who-we-are-section" style="content-visibility:auto; contain-intrinsic-size:1100px;">
+    <div class="who-we-section">
 
-    <!-- LEFT IMAGES -->
-    <div class="who-left">
-      <div class="image-stack">
-        <div class="img-card img-1">
-          <img src="./assets/home/<?= $left_cards[0]['image1'] ?>" alt="">
-        </div>
-        <div class="img-card img-2">
-          <img src="./assets/home/<?= $left_cards[0]['image2'] ?? 'fallback-bottom.jpg' ?>" alt="">
-        </div>
-      </div>
-      <div class="overlay-card">
-        <h2><?= $left_cards[0]['title'] ?? '20+' ?></h2>
-        <p>Years Experience</p>
-      </div>
-    </div>
+      <div class="who-left">
 
-    <!-- RIGHT TEXT -->
+        <div class="wh0-left-container">
+          <div class="who-left-one">
+
+            <div class="who-left-card">
+              <h2><?= $left_cards[0]['title'] ?? '20+' ?></h2>
+              <p>years experience</p>
+            </div>
+
+            <div class="who-left-image">
+              <img src="./assets/home/<?= $left_cards[0]['image1'] ?>" alt="Left Card Image" loading="lazy"
+                decoding="async">
+
+              <div class="card-two">
+                <div class="card-two-container">
+                  <img loading="lazy" decoding="async" src="./images/setting (2).png" alt="">
+                  <p><?= htmlspecialchars($left_cards[0]['overlay_text'] ?? '') ?></p>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+
+        <div class="who-left-two">
+          <div class="who-left-image">
+            <img loading="lazy" decoding="async"
+              src="./assets/home/<?= $left_cards[0]['image2'] ?? 'fallback-bottom.jpg' ?>" alt="Bottom Left Image">
+          </div>
+        </div>
+
+      </div>
+
+
+
 
       <div class="right-section">
         <div class="right-section-container">
@@ -206,8 +227,8 @@ while ($row = $res->fetch_assoc()) {
         </div>
       </div>
 
+    </div>
   </div>
-</div>
 
 
   <!-- SERVICES -->
@@ -273,38 +294,48 @@ while ($row = $res->fetch_assoc()) {
       </div>
     </div>
 
-<div class="spectrum-slider-structure">
-  <?php while ($loc = mysqli_fetch_assoc($company)) { ?>
-    <div class="company-single-slider">
-      <div class="company-single-container">
-        <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="">
-      </div>
-      <h4><?= htmlspecialchars($loc['country']) ?></h4>
-    </div>
-  <?php } ?>
+    <div class="spectrum-slider-structure">
+      <div class="spectrum-infinite-container">
 
-   <?php mysqli_data_seek($company, 0); while ($loc = mysqli_fetch_assoc($company)) { ?>
-        <div class="company-single-slider">
-          <div class="company-single-container">
-            <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="<?= htmlspecialchars($loc['country']) ?>">
-          </div>
-          <h4><?= htmlspecialchars($loc['country']) ?></h4>
+        <div class="spectrum-track">
+          <?php while ($loc = mysqli_fetch_assoc($company)) { ?>
+            <div class="company-single-slider">
+              <div class="company-single-container">
+                <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="">
+                <h4><?= htmlspecialchars($loc['country']) ?></h4>
+              </div>
+            </div>
+          <?php } ?>
+
+          <?php mysqli_data_seek($company, 0);
+          while ($loc = mysqli_fetch_assoc($company)) { ?>
+            <div class="company-single-slider">
+              <div class="company-single-container">
+                <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="">
+                <h4><?= htmlspecialchars($loc['country']) ?></h4>
+              </div>
+            </div>
+          <?php } ?>
+
         </div>
-      <?php } ?>
+
+      </div>
     </div>
+
+
+    <a href="./structure.php" id="btn" class="center">discover all</a>
   </div>
 
-  <a href="./structure.php" id="btn" class="spectrum-btn">discover all</a>
-</div>
 
-
+  </div>
+  </div>
 
   <!-- PROJECTS -->
   <div class="project-section">
     <div class="project-section-wrapper">
       <div class="text">
-        <p class="title">our projects</p>
-        <h1 class="header"><?= htmlspecialchars($headers['projects']['header']) ?></h1>
+        <p>our projects</p>
+        <h1><?= htmlspecialchars($headers['projects']['header']) ?></h1>
       </div>
       <div class="project-card-container">
         <div class="project-cards">
@@ -334,14 +365,11 @@ while ($row = $res->fetch_assoc()) {
   </div>
 
   <!-- NEWS -->
-<div class="company-news">
-  <div class="company-news-header">
-    <h6>latest news</h6>
-    <h3 class="highlight-letters"><?= htmlspecialchars($headers['news']['header']) ?></h3>
-  </div>
-
-  <div class="news-slider-wrapper-container">
-    <button class="news-arrow left">&lt;</button>
+  <div class="company-news">
+    <div class="company-news-header">
+      <h6>latest news</h6>
+      <h3 class="highlight-letters"><?= htmlspecialchars($headers['news']['header']) ?></h3>
+    </div>
     <div class="news-slider-structure">
       <div class="news-slider-container">
         <div class="news-slider-wrapper">
@@ -364,10 +392,8 @@ while ($row = $res->fetch_assoc()) {
         </div>
       </div>
     </div>
-    <button class="news-arrow right">&gt;</button>
+    <div class="slider-bullets"></div>
   </div>
-</div>
-
 
   <div class="final-spectrum-page">
     <div class="final-section">

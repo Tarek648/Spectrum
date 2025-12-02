@@ -1,3 +1,23 @@
+/* ===== VARIABLES ===== */
+:root {
+  --red: #E43636;
+  --black: #0a0a0a;
+  --white: #ffffff;
+  --gray: #1a1a1a;
+  --light-gray: #2a2a2a;
+  --text-muted: #999;
+  --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  --glow: 0 0 40px rgba(228, 54, 54, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+font-family: "Roboto", sans-serif;
+} 
+
 .navbar{
 background:white;
 height:auto;

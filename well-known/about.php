@@ -19,6 +19,7 @@ $home = $conn->query("SELECT * FROM home_section LIMIT 1")->fetch_assoc();
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css"/>
   <title>About Us</title>
 
 
@@ -40,13 +41,16 @@ body {
           height:auto;
         }
 
-      #loader {  
-        position:absolute;
-        width: 100%;
-        height: 100vh;
-        background-color:#A62C2C;
-        z-index: 9999;
-      }
+#loader {  
+  position: fixed;        /* fixed to viewport */
+  top: 0;                 /* start from top */
+  left: 0;                /* start from left */
+  width: 100vw;           /* full viewport width */
+  height: 100vh;          /* full viewport height */
+  overflow: hidden;
+  background-color: #A62C2C;
+  z-index: 9999;          /* on top of everything */
+}
       .noscroll {
     overflow: hidden;
     height: 100vh; 
@@ -79,6 +83,7 @@ body {
         font-size:4vw;
         font-weight: 500;
         width:100%;
+        overflow: hidden;
         display:flex;
         color: white;
         font-family:"gilroy";
@@ -204,7 +209,6 @@ body {
       position: relative;
       width: 100%;
       height: 100vh;
-      background-color: aquamarine;
       overflow: hidden;
   }
 
@@ -212,7 +216,7 @@ body {
       position: absolute;
       top: 0%;
       width: 100%;
-      height: 50vh;
+      height: 50%;
       background-color: rgb(255, 255, 255);
       z-index: 9;
       overflow: hidden;
@@ -221,7 +225,7 @@ body {
   #center{
       position: relative;
       width: 100%;
-      height: 100vh;
+      height: 100%;
       transform-origin: center;
       background-color: rgb(0, 0, 0);
       overflow: hidden;
@@ -231,36 +235,38 @@ body {
       position: absolute;
       bottom: 0;
       width: 100%;
-      height: 50vh;
+      height: 50%;
       background-color: rgb(255, 255, 255);
       overflow: hidden;
   }
 
   #vision h1 {
       font-size:21vw;
-      position: absolute;
-
-      left: 50%;
-      transform: translate(-50%, -50%);
-      white-space: nowrap; 
   }
 
+  #top-h1, #bottom-h1 {
+  position: absolute;
+  left: 50%;
+  font-size: 21vw; /* base size, will adjust with media queries */
+  color: #000;
+}
 
-  #top-h1 {
-    top:100%;
-    clip-path: inset(0 0 50% 0);   /* show top half */
-    transform: translateY(0%);
-  }
+#top-h1 {
+  top:-50%;                    /* stick to bottom of top section */
+  clip-path: inset(0 0 50% 0);  /* show top half */
+  transform: translate(-50%,40%) translateX(-0.234px); /* horizontal center only */
+}
 
-  #bottom-h1 {
-    top:0%;
-    clip-path: inset(50% 0 0 0);   /* show bottom half */
-    transform: translateY(0%);
-  }
+#bottom-h1 {
+  bottom: 50%;                        /* stick to top of bottom section */
+  clip-path: inset(50% 0 0 0);   /* show bottom half */
+  transform: translate(-50%,60%) translateX(-0.234px); /* horizontal center only */
+}
+
+
 
 
   .content{
-
     height:100%;
       display: flex;
       flex-direction: column;
@@ -280,7 +286,7 @@ body {
 
   .content h3{
       width: 50%;
-      font-size: 20px;
+      font-size: 2vw;
       font-weight: 400;
   }
 
@@ -379,7 +385,7 @@ body {
   }
   .our-story-par{
   font-size: 20px;
-  color:gray;
+  color:black;
   }
   .about-us{
     padding:0 50px;
@@ -389,11 +395,10 @@ body {
     top: 50px; /* sticks to top */
     margin-bottom: 50px; /* overlap the next card */
     z-index: 1;
-  width: 100%; /* ensure it fills container */
 
   }
 
-
+  
   .our-story-singleCard h6{
     position:absolute;
       bottom: 20px;
@@ -548,9 +553,6 @@ body {
     .our-story-singleCard h6{
       top:5%;
     }
-    .our-story-singleCard{
-      top:5px;
-    }
 
   }
   @media screen and (max-width :500px){
@@ -568,14 +570,18 @@ body {
   }
     .content h3{
       width:70%;
-      font-size:4.5vw;
+      font-size:3.5vw;
     }
     .content h1{
       font-size:20px;
     }
   }
   @media screen and (max-width :400px){
-
+    .our-story-cardContent{
+    display:grid;
+    grid-template-rows:1fr 1fr;
+    grid-template-columns: none;
+  }
   .image-left-story{
     height:250px;
   }
@@ -764,7 +770,7 @@ gsap.to(".our-story", {
 
     </script>
     <script src="about.js"></script>
-    
+    <script src="header.js"></script>
     <script src="footer.js"></script>
 </body>
 </html>

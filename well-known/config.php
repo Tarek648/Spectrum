@@ -1,8 +1,8 @@
 <?php
 $host = 'localhost';
-$db = 'spectrum_spectrum';  // 🔁 Replace with your actual database name
-$user = 'root';     // 🔁 Replace with your actual database user
-$pass = '';     // 🔁 Replace with your actual password
+$db = 'spectrum_spectrum';  
+$user = 'root';     
+$pass = '';     
 
 $conn = new mysqli($host, $user, $pass, $db);
 

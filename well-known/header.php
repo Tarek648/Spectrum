@@ -34,6 +34,7 @@ $header = $result->fetch_assoc();
                 <a href="mailto:<?= $navbar['email'] ?>"><i class="fa-regular fa-envelope"></i> <?= $navbar['email'] ?></a>
     <a href="tel:<?= $navbar['phone'] ?>"><i class="fa-solid fa-phone-volume"></i> <?= $navbar['phone'] ?></a>
     <a href="#"><i class="fa-regular fa-clock"></i> <?= $navbar['working_hours'] ?></a>
+
 </div>
 
 <div class="top-nav-social">
@@ -166,7 +167,12 @@ while($social = $social_result->fetch_assoc()) {
        
           </div>
 
-    
+ <div class="mobile-theme-toggle">
+    <button id="theme-toggle" class="theme-toggle">
+      <i id="theme-icon" class="fas fa-moon"></i>
+    </button>
+  </div>
+
 
          <div class="dots-grid">
   <span></span>
@@ -180,7 +186,7 @@ while($social = $social_result->fetch_assoc()) {
   <span></span>
         </div>
       </div>
-      
+
     </div>
   </div>
 

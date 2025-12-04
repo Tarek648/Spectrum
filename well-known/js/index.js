@@ -100,49 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* ===============================
-     AUTO-SCROLLING STRUCTURE SLIDER (SMOOTH INFINITE LOOP)
-  =============================== */
-  const structureSlider = document.querySelector(".spectrum-slider-structure");
-
-  if (structureSlider) {
-    const slides = structureSlider.querySelectorAll('.company-single-slider');
-    
-    // Only proceed if we have slides
-    if (slides.length > 0) {
-      let scrollPosition = 0;
-      const scrollSpeed = 0.5; // Pixels per frame (adjust for speed)
-      let animationId;
-
-      function smoothScroll() {
-        scrollPosition += scrollSpeed;
-        
-        // Get total scrollable width
-        const maxScroll = structureSlider.scrollWidth / 2;
-        
-        // Reset to beginning when halfway through (where duplicate starts)
-        if (scrollPosition >= maxScroll) {
-          scrollPosition = 0;
-        }
-        
-        structureSlider.scrollLeft = scrollPosition;
-        animationId = requestAnimationFrame(smoothScroll);
-      }
-
-      // Start the animation
-      smoothScroll();
-
-      // Pause on hover
-      structureSlider.addEventListener('mouseenter', () => {
-        cancelAnimationFrame(animationId);
-      });
-
-      structureSlider.addEventListener('mouseleave', () => {
-        smoothScroll();
-      });
-    }
-  }
-
-  /* ===============================
      NEWS SLIDER (MANUAL)
   =============================== */
   const newsSlider = document.querySelector(".news-slider-structure");

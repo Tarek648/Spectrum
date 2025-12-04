@@ -258,44 +258,45 @@ while ($row = $res->fetch_assoc()) {
   </div>
 
   <!-- COMPANY SPECTRUM -->
-  <div class="company-spectrum-locations">
-    <div class="company-spectrum-header">
-      <div class="company-header-container">
-        <div class="company-left">
-          <h6>company structure</h6>
-          <h3 class="highlight-letters red">
-            <?= htmlspecialchars($headers['structure']['header']) ?>
-          </h3>
+<div class="company-spectrum-locations">
+  <div class="company-spectrum-header">
+    <div class="company-header-container">
+      <div class="company-left">
+        <h6>company structure</h6>
+        <h3 class="highlight-letters red">
+          <?= htmlspecialchars($headers['structure']['header']) ?>
+        </h3>
+      </div>
+      <p class="right-spectrum">
+        <?= htmlspecialchars($headers['structure']['description']) ?>
+      </p>
+    </div>
+  </div>
+
+  <div class="structure-timeline">
+    <?php 
+      $index = 0;
+      mysqli_data_seek($company, 0);
+      while ($loc = mysqli_fetch_assoc($company)) { 
+        $isEven = $index % 2 === 0;
+    ?>
+      <div class="structure-block <?= $isEven ? 'left-block' : 'right-block' ?>">
+        <div class="structure-image">
+          <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="<?= htmlspecialchars($loc['country']) ?>">
         </div>
-        <p class="right-spectrum">
-          <?= htmlspecialchars($headers['structure']['description']) ?>
-        </p>
-      </div>
-    </div>
-
-<div class="spectrum-slider-structure">
-  <?php while ($loc = mysqli_fetch_assoc($company)) { ?>
-    <div class="company-single-slider">
-      <div class="company-single-container">
-        <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="">
-      </div>
-      <h4><?= htmlspecialchars($loc['country']) ?></h4>
-    </div>
-  <?php } ?>
-
-   <?php mysqli_data_seek($company, 0); while ($loc = mysqli_fetch_assoc($company)) { ?>
-        <div class="company-single-slider">
-          <div class="company-single-container">
-            <img loading="lazy" src="./assets/structure/<?= htmlspecialchars($loc['image_path']) ?>" alt="<?= htmlspecialchars($loc['country']) ?>">
-          </div>
+        <div class="structure-info">
           <h4><?= htmlspecialchars($loc['country']) ?></h4>
         </div>
-      <?php } ?>
-    </div>
+      </div>
+    <?php 
+      $index++;
+      } 
+    ?>
   </div>
 
   <a href="./structure.php" id="btn" class="spectrum-btn">discover all</a>
 </div>
+
 
 
 
@@ -464,7 +465,7 @@ while ($row = $res->fetch_assoc()) {
   <?php include('footer.php'); ?>
 
   <script src="./js/index.js"></script>
-  <script src="footer.js"></script>
+<script src="./js/style.js"></script>  
 </body>
 
 </html>

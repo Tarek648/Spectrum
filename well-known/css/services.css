@@ -281,143 +281,208 @@
     color: var(--color-text-muted); /* theme soft text color */
 }
 
-/* ===============================
-   FOURTH SECTION CONTAINER
-================================*/
-#fourth-part {
-    padding: 120px 0;
-    background: var(--color-bg);
+/* FOURTH PART */
+
+/* ✔ ADDED — background follows theme */
+section#fourth-part,
+.fourth-container {
+     background: var(--color-bg-soft);
     color: var(--color-text);
 }
 
+.mobile-theme-toggle {
+  display: flex;
+  justify-content: center;
+  padding: 15px 0;
+  border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--color-primary);
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.2);
+}
+
+/* Container layout */
 .fourth-container {
-    width: 90%;
-    max-width: 1500px;
-    margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 60px;
+    gap: 40px;
+    padding: 60px 5%;
 }
 
-/* ===============================
-   LEFT TEXT SIDE
-================================*/
+/* Left text section */
 .cad-text-container {
     flex: 1;
 }
 
-.cadd-text {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-}
-
 .cadd-text-one h1 {
-    font-size: 58px;
-    font-weight: 900;
-    letter-spacing: 1px;
-    color: var(--color-primary);
-    text-shadow: 0 0 20px rgba(255, 0, 0, 0.25);
-    margin-bottom: 20px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: var(--color-text);
 }
 
 .cadd-text-one p {
-    font-size: 20px;
-    line-height: 1.7;
+    font-size: 1rem;
+    line-height: 1.6;
     color: var(--color-text-muted);
-    margin-top: 10px;
 }
 
-/* ===============================
-   BULLET COLUMNS
-================================*/
+/* Column styling */
 .cad-text-two {
     display: flex;
-    gap: 40px;
-}
-
-.cad-column {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
+    gap: 30px;
+    margin-top: 25px;
 }
 
 .cad-column h3 {
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     color: var(--color-text);
 }
 
-.circle {
-    width: 12px;
-    height: 12px;
+.cad-column .circle {
+    width: 8px;
+    height: 8px;
     background: var(--color-primary);
     border-radius: 50%;
-    margin-right: 12px;
-    box-shadow: 0 0 10px var(--glow-primary);
+    display: inline-block;
+    margin-right: 8px;
 }
 
-/* ===============================
-   WAVE IMAGE (RIGHT SIDE)
-================================*/
-.cadd-image {
-    flex: 1;
-    max-width: 600px;
-    position: relative;
-}
-
+/* ================================
+   2D IMAGE — NO MOVEMENT
+   ================================ */
 .cadd-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-    /* ★ WAVE CLIP MASK ★ */
-    mask-image: url('data:image/svg+xml;utf8,\
-<svg width="100%" height="100%" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">\
-<path d="M0 0 H500 V380 Q250 500 0 380 Z" fill="white"/>\
-</svg>');
-    -webkit-mask-image: url('data:image/svg+xml;utf8,\
-<svg width="100%" height="100%" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">\
-<path d="M0 0 H500 V380 Q250 500 0 380 Z" fill="white"/>\
-</svg>');
-
-    mask-size: 100% 100%;
-    -webkit-mask-size: 100% 100%;
-    box-shadow: var(--shadow-strong);
+    width: 420px;
+    height: auto;
     border-radius: 20px;
+    box-shadow: var(--shadow-strong);
+
+    /* REMOVE ALL ANIMATION */
+    transform-style: flat;
+    transform: translateY(0);
+    animation: none;
+
+    transition: transform 0.4s ease;
 }
 
-/* ===============================
-   RESPONSIVE
-================================*/
-@media (max-width: 1100px) {
-    .fourth-container {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .cad-text-two {
-        justify-content: center;
-    }
-
-    .cadd-image {
-        max-width: 500px;
-    }
+/* Hover effect still works */
+.cadd-image img:hover {
+    transform: scale(1.03);
+    box-shadow: var(--glow-primary);
 }
 
-@media (max-width: 700px) {
-    .cadd-text-one h1 {
-        font-size: 42px;
-    }
+/* Floating animation removed */
+@keyframes floating {}
+@keyframes subtle-tilt {}
 
-    .cad-column h3 {
-        font-size: 18px;
-    }
+/* ===================================
+   QA SECTION — DIAGONAL TRIANGLE SPLIT
+   =================================== */
 
-    .cadd-image {
-        max-width: 90%;
-    }
+.qa-section {
+    position: relative;
+    padding: 130px 10%;
+    overflow: hidden;
+    z-index: 1;
+    color: var(--color-text);
+
+    /* Removed floating animation */
+    animation: none;
 }
+
+/* ===========================
+   TRIANGLE #1 – TOP LEFT
+   =========================== */
+.qa-section::before {
+    content: "";
+    position: absolute;
+    width: 101%;
+    height: 101%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    background: #000000; /* dark mode black */
+    clip-path: polygon(0 0, 100% 0, 0 100%);
+    transition: background 0.6s ease;
+}
+
+/* ===========================
+   TRIANGLE #2 – BOTTOM RIGHT
+   =========================== */
+.qa-section::after {
+    content: "";
+    position: absolute;
+    width: 101%;
+    height: 101%;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
+
+    background: #1c1c1c; /* dark mode grey */
+    clip-path: polygon(100% 100%, 100% 0, 0 100%);
+    transition: background 0.6s ease;
+}
+
+/* ===========================
+   LIGHT MODE COLORS
+   =========================== */
+.light-theme .qa-section::before {
+    background: #E43636; /* red top-left */
+}
+
+.light-theme .qa-section::after {
+    background: #ffffff; /* white bottom-right */
+}
+
+/* ===================================
+   CENTER TEXT BLOCK (ADDED)
+   =================================== */
+.qa-wrapper {
+    display: flex;
+    justify-content: center;   /* center horizontally */
+    align-items: center;       /* center vertically */
+    text-align: center;        /* center text inside block */
+    min-height: 400px;         /* height control */
+}
+
+.qa-header {
+    max-width: 800px;
+}
+
+/* ===========================
+   TEXT STYLING
+   =========================== */
+.qa-header h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.qa-header p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    max-width: 100%;
+    opacity: 0.9;
+}
+
+/* Removed floating keyframes */
+

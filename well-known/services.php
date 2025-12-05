@@ -116,10 +116,16 @@ while($row = $sections->fetch_assoc()) {
     </div>
 </section> 
 
-<!-- <section class="qa-section">
-  <h2><?= $sectionsData['qa-section']['header'] ?></h2>
-  <p><?= nl2br($sectionsData['qa-section']['content']) ?></p>
-</section> -->
+ <section class="qa-section">
+  <div class="qa-wrapper">
+      <div class="qa-header">
+          <h2><?= $sectionsData['qa-section']['header'] ?></h2>
+          <p><?= nl2br($sectionsData['qa-section']['content']) ?></p>
+      </div>
+  </div>
+</section>
+
+
 
 
 <script src="./js/style.js"></script>  
